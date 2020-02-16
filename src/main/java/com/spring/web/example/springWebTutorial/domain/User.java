@@ -1,19 +1,24 @@
 package com.spring.web.example.springWebTutorial.domain;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class User {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Pet> pets;
 
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String email, Set<Pet> pets) {
+    public User(Long id, String firstName, String lastName, String email, Set<Pet> pets) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,11 +26,11 @@ public class User {
         this.pets = pets;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
