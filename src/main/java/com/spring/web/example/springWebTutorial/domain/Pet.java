@@ -17,8 +17,7 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(Long id, String name, int age) {
-        this.id = id;
+    public Pet(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -68,6 +67,6 @@ public class Pet {
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return id != null ? id.hashCode() : 0;
     }
 }

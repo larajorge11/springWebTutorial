@@ -1,6 +1,7 @@
 package com.spring.web.example.springWebTutorial.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,17 +14,15 @@ public class User {
     private String lastName;
     private String email;
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Pet> pets;
+    private Set<Pet> pets = new HashSet<>();
 
     public User() {
     }
 
-    public User(Long id, String firstName, String lastName, String email, Set<Pet> pets) {
-        this.id = id;
+    public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.pets = pets;
     }
 
     public Long getId() {
@@ -89,6 +88,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return id != null ? id.hashCode() : 0;
     }
 }
