@@ -1,9 +1,6 @@
 package com.spring.web.example.springWebTutorial.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Pet {
@@ -13,6 +10,8 @@ public class Pet {
     private Long id;
     private String name;
     private int age;
+    @ManyToOne
+    private Publisher publisher;
 
     public Pet() {
     }
@@ -20,6 +19,14 @@ public class Pet {
     public Pet(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public Long getId() {
@@ -62,7 +69,10 @@ public class Pet {
 
         Pet pet = (Pet) o;
 
-        return id.equals(pet.id);
+        if (age != pet.age) return false;
+        if (id != null ? !id.equals(pet.id) : pet.id != null) return false;
+        if (name != null ? !name.equals(pet.name) : pet.name != null) return false;
+        return publisher != null ? publisher.equals(pet.publisher) : pet.publisher == null;
     }
 
     @Override
