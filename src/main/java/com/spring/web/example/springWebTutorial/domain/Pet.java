@@ -10,6 +10,7 @@ public class Pet {
     private Long id;
     private String name;
     private int age;
+
     @ManyToOne
     private Publisher publisher;
 

@@ -46,8 +46,10 @@ public class BootStrapData implements CommandLineRunner {
 
         userRepository.save(user2);
         petRepository.save(pet2);
+        publisherRepository.save(publisher);
 
         System.out.println("Bootstrap started");
         System.out.println("Number of Pets " + petRepository.count());
+        System.out.println("Publisher number of pets: " + publisherRepository.count());
     }
 }

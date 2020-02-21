@@ -15,6 +15,7 @@ public class Publisher {
     private String city;
     private String state;
     private String zip;
+
     @OneToMany
     @JoinColumn(name = "publisher_id")
     private Set<Pet> pets = new HashSet<>();
