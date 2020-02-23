@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Framework Tyhmeleaf</title>
+</head>
+<body>
+<h1>Pets List</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    <tr th:each="pet : ${pets}">
+        <td th:text="${pet.id}">11</td>
+        <td th:text="${pet.name}">Davor</td>
+        <td th:text="${pet.age}">13</td>
+    </tr>
+</table>
+</body>
+</html>
